@@ -8,17 +8,34 @@
 
 #import "DetailViewController.h"
 
-@interface DetailViewController ()
+@interface DetailViewController ()<UITextViewDelegate>
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 - (void)configureView;
 @end
 
 @implementation DetailViewController
 
+
+#pragma mark - UITextViewDelegate
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    return YES;
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView{
+    NSLog(@"textView did end editting.");
+    if (_detailItem) {
+        [_detailItem setValue:textView.text forKey:@"content"];
+        NSArray *stringArray = [textView.text componentsSeparatedByString:@"\n"];
+        NSString *possibleTitle = [stringArray objectAtIndex:0];
+        [_detailItem setValue:possibleTitle forKey:@"title"];
+    }
+}
+
+
 #pragma mark - Managing the detail item
 
 - (void)setDetailItem:(id)newDetailItem
-{
+{    
     if (_detailItem != newDetailItem) {
         _detailItem = newDetailItem;
         
@@ -37,6 +54,7 @@
 
     if (self.detailItem) {
         self.detailDescriptionLabel.text = [[self.detailItem valueForKey:@"timeStamp"] description];
+        self.noteTextView.text = [self.detailItem valueForKey:@"content"];
     }
 }
 
@@ -45,6 +63,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self configureView];
+}
+
+- (void)viewDidUnload{
+    [super viewDidUnload];
+    
+    NSLog(@"unload ");
 }
 
 - (void)didReceiveMemoryWarning
