@@ -9,6 +9,9 @@
 #import "MasterViewController.h"
 
 #import "DetailViewController.h"
+#import "CreatePasswordViewController.h"
+#import "PasswordViewController.h"
+#import "AppSetting.h"
 
 @interface MasterViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -34,6 +37,22 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
+    if ([AppSetting haveSetupPassword] == NO ) {
+        
+        CreatePasswordViewController *createPwdVC = [[CreatePasswordViewController alloc] init];
+        [self.view addSubview:createPwdVC.view];
+        self.navigationController.navigationBarHidden = YES;
+        
+    }else{
+    
+        PasswordViewController *loginVC = [[PasswordViewController alloc] init];
+        [self.view addSubview:loginVC.view];
+        self.navigationController.navigationBarHidden = YES;
+    }
+
+    
+
 }
 
 - (void)didReceiveMemoryWarning

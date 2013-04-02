@@ -11,6 +11,11 @@
 @interface AppSetting : NSObject
 
 + (BOOL)haveSetupPassword;
++ (void)setupPassword;
+
++ (void)savePassword:(NSString*)pwd;
++ (NSString*)whatisPassword;
+
 + (BOOL)isPasswordCorrect;
 
 + (BOOL)shouldShowPasswordView;

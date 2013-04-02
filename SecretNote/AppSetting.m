@@ -11,8 +11,23 @@
 @implementation AppSetting
 
 + (BOOL)haveSetupPassword{
-    return YES;
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"create_pwd"];
 }
+
++ (void)setupPassword{
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"create_pwd"];
+    [[NSUserDefaults standardUserDefaults] synchronize];  
+}
+
++ (void)savePassword:(NSString*)pwd{
+    [[NSUserDefaults standardUserDefaults] setValue:pwd forKey:@"pwd"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (NSString*)whatisPassword{
+    return [[NSUserDefaults standardUserDefaults] stringForKey:@"pwd"];
+}
+
 + (BOOL)isPasswordCorrect{
     return YES;
 }
