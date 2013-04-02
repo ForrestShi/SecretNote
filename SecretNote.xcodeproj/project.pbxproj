@@ -23,6 +23,11 @@
 		18FD453A17070A7000BE0890 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FD453917070A7000BE0890 /* MasterViewController.m */; };
 		18FD453D17070A7000BE0890 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FD453C17070A7000BE0890 /* DetailViewController.m */; };
 		18FD454417070A7E00BE0890 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 18FD454317070A7E00BE0890 /* README */; };
+		CDA15CF5170A832800E9A543 /* AppSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA15CF4170A832800E9A543 /* AppSetting.m */; };
+		CDA15CFB170A855000E9A543 /* PasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA15CF9170A855000E9A543 /* PasswordViewController.m */; };
+		CDA15CFC170A855000E9A543 /* PasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA15CFA170A855000E9A543 /* PasswordViewController.xib */; };
+		CDA15D00170A86AA00E9A543 /* CreatePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA15CFE170A86AA00E9A543 /* CreatePasswordViewController.m */; };
+		CDA15D01170A86AA00E9A543 /* CreatePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA15CFF170A86AA00E9A543 /* CreatePasswordViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +53,14 @@
 		18FD453B17070A7000BE0890 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		18FD453C17070A7000BE0890 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		18FD454317070A7E00BE0890 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		CDA15CF3170A832800E9A543 /* AppSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppSetting.h; sourceTree = "<group>"; };
+		CDA15CF4170A832800E9A543 /* AppSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppSetting.m; sourceTree = "<group>"; };
+		CDA15CF8170A855000E9A543 /* PasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordViewController.h; sourceTree = "<group>"; };
+		CDA15CF9170A855000E9A543 /* PasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordViewController.m; sourceTree = "<group>"; };
+		CDA15CFA170A855000E9A543 /* PasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PasswordViewController.xib; sourceTree = "<group>"; };
+		CDA15CFD170A86AA00E9A543 /* CreatePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePasswordViewController.h; sourceTree = "<group>"; };
+		CDA15CFE170A86AA00E9A543 /* CreatePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePasswordViewController.m; sourceTree = "<group>"; };
+		CDA15CFF170A86AA00E9A543 /* CreatePasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePasswordViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +81,12 @@
 		18FD450617070A6F00BE0890 = {
 			isa = PBXGroup;
 			children = (
+				CDA15CFD170A86AA00E9A543 /* CreatePasswordViewController.h */,
+				CDA15CFE170A86AA00E9A543 /* CreatePasswordViewController.m */,
+				CDA15CFF170A86AA00E9A543 /* CreatePasswordViewController.xib */,
+				CDA15CF8170A855000E9A543 /* PasswordViewController.h */,
+				CDA15CF9170A855000E9A543 /* PasswordViewController.m */,
+				CDA15CFA170A855000E9A543 /* PasswordViewController.xib */,
 				18FD454317070A7E00BE0890 /* README */,
 				18FD451D17070A6F00BE0890 /* SecretNote */,
 				18FD451417070A6F00BE0890 /* Frameworks */,
@@ -107,6 +126,8 @@
 				18FD453C17070A7000BE0890 /* DetailViewController.m */,
 				18FD453517070A7000BE0890 /* SecretNote.xcdatamodeld */,
 				18FD451E17070A6F00BE0890 /* Supporting Files */,
+				CDA15CF3170A832800E9A543 /* AppSetting.h */,
+				CDA15CF4170A832800E9A543 /* AppSetting.m */,
 			);
 			path = SecretNote;
 			sourceTree = "<group>";
@@ -183,6 +204,8 @@
 				18FD453117070A6F00BE0890 /* MainStoryboard_iPhone.storyboard in Resources */,
 				18FD453417070A7000BE0890 /* MainStoryboard_iPad.storyboard in Resources */,
 				18FD454417070A7E00BE0890 /* README in Resources */,
+				CDA15CFC170A855000E9A543 /* PasswordViewController.xib in Resources */,
+				CDA15D01170A86AA00E9A543 /* CreatePasswordViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +221,9 @@
 				18FD453717070A7000BE0890 /* SecretNote.xcdatamodeld in Sources */,
 				18FD453A17070A7000BE0890 /* MasterViewController.m in Sources */,
 				18FD453D17070A7000BE0890 /* DetailViewController.m in Sources */,
+				CDA15CF5170A832800E9A543 /* AppSetting.m in Sources */,
+				CDA15CFB170A855000E9A543 /* PasswordViewController.m in Sources */,
+				CDA15D00170A86AA00E9A543 /* CreatePasswordViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +350,7 @@
 				18FD454217070A7000BE0890 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
