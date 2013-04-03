@@ -39,9 +39,7 @@
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
     if ([AppSetting haveSetupPassword] == NO ) {
-        
         CreatePasswordViewController *createPwdVC = [[CreatePasswordViewController alloc] initWithNibName:@"CreatePasswordViewController" bundle:nil];
-        self.navigationController.navigationBarHidden = YES;
         [self.navigationController presentViewController:createPwdVC animated:NO completion:^{
             
         }];

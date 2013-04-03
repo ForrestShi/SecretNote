@@ -19,8 +19,9 @@
     [[NSUserDefaults standardUserDefaults] synchronize];  
 }
 
-+ (void)savePassword:(NSString*)pwd{
++ (void)savePassword:(NSString*)pwd emailAddress:(NSString*)ea{
     [[NSUserDefaults standardUserDefaults] setValue:pwd forKey:@"pwd"];
+    [[NSUserDefaults standardUserDefaults] setValue:ea forKey:@"email"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

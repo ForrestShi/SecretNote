@@ -13,7 +13,7 @@
 + (BOOL)haveSetupPassword;
 + (void)setupPassword;
 
-+ (void)savePassword:(NSString*)pwd;
++ (void)savePassword:(NSString*)pwd emailAddress:(NSString*)ea;
 + (NSString*)whatisPassword;
 
 + (BOOL)isPasswordCorrect;
