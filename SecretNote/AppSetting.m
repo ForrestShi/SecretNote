@@ -29,10 +29,13 @@
     return [[NSUserDefaults standardUserDefaults] stringForKey:@"pwd"];
 }
 
-+ (BOOL)isPasswordCorrect{
-    return YES;
++ (BOOL)isPasswordCorrect:(NSString*)pwd{
+    if (pwd && [pwd isEqualToString:[AppSetting whatisPassword]]) {
+        return YES;
+    }else{
+        return NO;
+    }
 }
-
 
 + (BOOL)shouldShowPasswordView{
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"need_show"];

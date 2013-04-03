@@ -67,6 +67,7 @@
 - (IBAction)finishCreatingPassword:(id)sender{
     if ([self.pwdField1.text isEqualToString:self.pwdField2.text] && self.pwdField2.text.length > 0 ) {
         [AppSetting savePassword:self.pwdField2.text emailAddress:self.emailField.text];
+        [AppSetting setupPassword];
         [self dismissViewControllerAnimated:YES completion:^{
         }];
     }

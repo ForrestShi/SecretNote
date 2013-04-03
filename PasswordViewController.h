@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface PasswordViewController : UIViewController
+@property(nonatomic,weak) IBOutlet UITextField *passwordField;
+@property(nonatomic,weak) IBOutlet UIView *containerView;
+
+-(IBAction)enter:(id)sender;
+-(IBAction)forgotPwd:(id)sender;
 
 @end

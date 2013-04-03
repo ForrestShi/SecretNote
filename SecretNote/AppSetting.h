@@ -16,7 +16,7 @@
 + (void)savePassword:(NSString*)pwd emailAddress:(NSString*)ea;
 + (NSString*)whatisPassword;
 
-+ (BOOL)isPasswordCorrect;
++ (BOOL)isPasswordCorrect:(NSString*)pwd;
 
 + (BOOL)shouldShowPasswordView;
 + (void)needShowPasswordViewNextTime;

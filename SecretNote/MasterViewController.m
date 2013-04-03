@@ -28,6 +28,13 @@
     [super awakeFromNib];
 }
 
+- (void)showLoginViewWithPassword{
+    PasswordViewController *loginVC = [[PasswordViewController alloc] initWithNibName:@"PasswordViewController" bundle:nil];
+    [self.navigationController presentViewController:loginVC animated:NO completion:^{
+        
+    }];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -45,10 +52,7 @@
         }];
         
     }else{
-    
-        PasswordViewController *loginVC = [[PasswordViewController alloc] init];
-        [self.view addSubview:loginVC.view];
-        self.navigationController.navigationBarHidden = YES;
+        [[NSNotificationCenter defaultCenter] postNotificationName:kShowLoginView object:nil];
     }
 
     

@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 #import "MasterViewController.h"
+#import "PasswordViewController.h"
 
 @implementation AppDelegate
 
@@ -32,6 +33,8 @@
         MasterViewController *controller = (MasterViewController *)navigationController.topViewController;
         controller.managedObjectContext = self.managedObjectContext;
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLoginViewWithPassword) name:kShowLoginView object:nil];
     return YES;
 }
 							
@@ -50,6 +53,8 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [[NSNotificationCenter defaultCenter] postNotificationName:kShowLoginView object:nil];
+
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -61,6 +66,13 @@
 {
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
+}
+
+- (void)showLoginViewWithPassword{
+    PasswordViewController *loginVC = [[PasswordViewController alloc] initWithNibName:@"PasswordViewController" bundle:nil];
+    [self.window.rootViewController presentViewController:loginVC animated:NO completion:^{
+        
+    }];
 }
 
 - (void)saveContext
