@@ -45,6 +45,12 @@
         textField.secureTextEntry = YES;
         self.wrongPwdLabel.hidden = YES;
     }
+    
+    if (textField == self.emailField ) {
+        [UIView animateWithDuration:0.5 animations:^{
+            self.view.transform = CGAffineTransformMakeTranslation(0, -216);
+        }];
+    }
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField            // may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
@@ -56,6 +62,12 @@
             }];
             self.wrongPwdLabel.hidden = NO;
         }
+    }
+    
+    if (textField == self.emailField ) {
+        [UIView animateWithDuration:0.5 animations:^{
+            self.view.transform = CGAffineTransformIdentity;
+        }];
     }
 }
 
