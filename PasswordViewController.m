@@ -10,11 +10,7 @@
 #import "AppSetting.h"
 
 
-@interface PasswordViewController ()<UITextFieldDelegate>{
-    int direction;
-    int shakes;
-}
-
+@interface PasswordViewController ()<UITextFieldDelegate>
 @end
 
 @implementation PasswordViewController
@@ -41,24 +37,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-//-(void)shake:(UIView *)theOneYouWannaShake
-//{
-//    [UIView animateWithDuration:0.08 animations:^
-//     {
-//         theOneYouWannaShake.transform = CGAffineTransformMakeTranslation(5*direction, 0);
-//     }
-//     completion:^(BOOL finished)
-//     {
-//         if(shakes >= 10)
-//         {
-//             theOneYouWannaShake.transform = CGAffineTransformIdentity;
-//             return;
-//         }
-//         shakes++;
-//         direction = direction * -1;
-//         [self shake:theOneYouWannaShake];
-//     }];
-//}
 
 //http://stackoverflow.com/questions/10294451/animating-uitextfield-to-indicate-a-wrong-password
 
@@ -97,12 +75,11 @@
 -(IBAction)enter:(id)sender{
     if ([AppSetting isPasswordCorrect:self.passwordField.text]) {
         //correct
+        [self dismissViewControllerAnimated:YES completion:^{
+            
+        }];
     }else{
-        direction = 1;
-        shakes = 0;
-//        UIView *containerView = [self.view viewWithTag:1000];
-//        [self shake:containerView];
-        //[self shake:self.containerView];
+
         [self shakeAnimation:self.containerView];
     }
 }
