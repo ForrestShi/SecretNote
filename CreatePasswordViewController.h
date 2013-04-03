@@ -13,6 +13,7 @@
 @property (nonatomic,weak) IBOutlet UITextField *pwdField1;
 @property (nonatomic,weak) IBOutlet UITextField *pwdField2;
 @property (nonatomic,weak) IBOutlet UITextField *emailField;
+@property (nonatomic,weak) IBOutlet UILabel     *wrongPwdLabel;
 
 - (IBAction)finishCreatingPassword:(id)sender;
 

@@ -29,6 +29,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.wrongPwdLabel.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,6 +43,7 @@
     textField.textColor = [UIColor blackColor];
     if (textField == self.pwdField2 || textField == self.pwdField1 ) {
         textField.secureTextEntry = YES;
+        self.wrongPwdLabel.hidden = YES;
     }
 }
 
@@ -49,10 +51,17 @@
 {
     if (textField == self.pwdField2 ) {
         if (![self.pwdField2.text isEqualToString:self.pwdField1.text] && textField.text.length > 0 ) {
-            self.pwdField2.text = @"Wrong";
-            self.pwdField2.textColor = [UIColor lightGrayColor];
+            [UIView animateWithDuration:0.5 animations:^{
+                self.pwdField2.textColor = [UIColor lightGrayColor];
+            }];
+            self.wrongPwdLabel.hidden = NO;
         }
     }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (IBAction)finishCreatingPassword:(id)sender{

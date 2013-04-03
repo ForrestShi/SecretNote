@@ -40,9 +40,11 @@
     
     if ([AppSetting haveSetupPassword] == NO ) {
         
-        CreatePasswordViewController *createPwdVC = [[CreatePasswordViewController alloc] init];
-        [self.view addSubview:createPwdVC.view];
+        CreatePasswordViewController *createPwdVC = [[CreatePasswordViewController alloc] initWithNibName:@"CreatePasswordViewController" bundle:nil];
         self.navigationController.navigationBarHidden = YES;
+        [self.navigationController presentViewController:createPwdVC animated:NO completion:^{
+            
+        }];
         
     }else{
     
