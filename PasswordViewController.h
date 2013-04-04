@@ -11,6 +11,8 @@
 @interface PasswordViewController : UIViewController
 @property(nonatomic,weak) IBOutlet UITextField *passwordField;
 @property(nonatomic,weak) IBOutlet UIView *containerView;
+@property(nonatomic,weak) IBOutlet UIButton *enterButton;
+@property(nonatomic,weak) IBOutlet UIButton *sendPwdButton;
 
 -(IBAction)enter:(id)sender;
 -(IBAction)forgotPwd:(id)sender;

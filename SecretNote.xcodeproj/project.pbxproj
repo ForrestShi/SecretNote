@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18F0B728170D378E000E75BE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F0B727170D378E000E75BE /* QuartzCore.framework */; };
 		18FD451617070A6F00BE0890 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FD451517070A6F00BE0890 /* UIKit.framework */; };
 		18FD451817070A6F00BE0890 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FD451717070A6F00BE0890 /* Foundation.framework */; };
 		18FD451A17070A6F00BE0890 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FD451917070A6F00BE0890 /* CoreGraphics.framework */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18F0B727170D378E000E75BE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		18FD451117070A6F00BE0890 /* SecretNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SecretNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18FD451517070A6F00BE0890 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		18FD451717070A6F00BE0890 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -68,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18F0B728170D378E000E75BE /* QuartzCore.framework in Frameworks */,
 				18FD451617070A6F00BE0890 /* UIKit.framework in Frameworks */,
 				18FD451817070A6F00BE0890 /* Foundation.framework in Frameworks */,
 				18FD451A17070A6F00BE0890 /* CoreGraphics.framework in Frameworks */,
@@ -81,6 +84,7 @@
 		18FD450617070A6F00BE0890 = {
 			isa = PBXGroup;
 			children = (
+				18F0B727170D378E000E75BE /* QuartzCore.framework */,
 				CDA15CFD170A86AA00E9A543 /* CreatePasswordViewController.h */,
 				CDA15CFE170A86AA00E9A543 /* CreatePasswordViewController.m */,
 				CDA15CFF170A86AA00E9A543 /* CreatePasswordViewController.xib */,

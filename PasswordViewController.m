@@ -8,7 +8,7 @@
 
 #import "PasswordViewController.h"
 #import "AppSetting.h"
-
+#import <QuartzCore/QuartzCore.h>
 
 @interface PasswordViewController ()<UITextFieldDelegate>
 @end
@@ -72,6 +72,8 @@
                      }];
 }
 
+static int wrongPwdTimers = 0;
+
 -(IBAction)enter:(id)sender{
     if ([AppSetting isPasswordCorrect:self.passwordField.text]) {
         //correct
@@ -79,14 +81,40 @@
             
         }];
     }else{
+        wrongPwdTimers ++;
+        
+        if (wrongPwdTimers > 3 ) {
+            wrongPwdTimers = 0;
+            
+            [UIView animateWithDuration:0.3 animations:^{
+                self.containerView.alpha = 0.;
+                self.sendPwdButton.alpha = 1.;
+                self.sendPwdButton.hidden = NO;
 
+            } completion:^(BOOL finished) {
+            }];            
+            return;
+        }
+        [UIMenuController sharedMenuController].menuVisible = NO;
+        [self.passwordField selectAll:nil];
+        [self.passwordField setClearsOnBeginEditing:YES];
         [self shakeAnimation:self.containerView];
     }
 }
--(IBAction)forgotPwd:(id)sender{}
+-(IBAction)forgotPwd:(id)sender{
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        self.containerView.alpha = 1.;
+        self.sendPwdButton.alpha = 0.;
+    } completion:^(BOOL finished) {
+    }];
+
+    
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
+    [self enter:nil];
     return YES;
 }
 
