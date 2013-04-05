@@ -29,6 +29,17 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTap)];
+    [self.view addGestureRecognizer:tap];
+    
+    self.enterButton.enabled = NO;
+}
+
+- (void)onTap{
+    [self.passwordField resignFirstResponder];
+    
+    //[[NSNotificationCenter defaultCenter] postNotificationName:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,10 +59,14 @@
     static int shakes = 0;
     static int translate = reset;
     
+    
     [UIView animateWithDuration:(0.09-(shakes*.01)) // reduce duration every shake from .09 to .04
                           delay:0.01f//edge wait delay
                         options:(enum UIViewAnimationOptions) UIViewAnimationCurveEaseInOut
-                     animations:^{view.transform = CGAffineTransformMakeTranslation(translate, 0);}
+                     animations:^{
+                         view.transform = CGAffineTransformMakeTranslation(translate, 0);
+                         
+                     }
                      completion:^(BOOL finished){
                          if(shakes < maxShakes){
                              shakes++;
@@ -72,9 +87,42 @@
                      }];
 }
 
+int direction = 1;
+int offset = 16;
+int shakes = 0;
+
+- (void)shakeView:(UIView*)shakedView{
+    
+    [UIView animateWithDuration:(0.09 - .01*shakes ) delay:.01 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        //        
+        //shakedView.transform = CGAffineTransformConcat(shakedView.transform, CGAffineTransformMakeTranslation(offset * direction, 0));
+        
+        shakedView.transform = CGAffineTransformMakeTranslation(offset * direction, 0);
+    
+    } completion:^(BOOL finished) {
+    
+        shakes++;
+        offset--;
+        direction *= -1;
+        
+        if (shakes > 8 ) {
+            shakes = 0;
+            offset = 16;
+            direction = 1;
+            
+            shakedView.transform = CGAffineTransformIdentity;
+            return ;
+            
+        }else{
+            [self shakeView:shakedView];
+        }
+    }];
+}
+
 static int wrongPwdTimers = 0;
 
 -(IBAction)enter:(id)sender{
+        
     if ([AppSetting isPasswordCorrect:self.passwordField.text]) {
         //correct
         [self dismissViewControllerAnimated:YES completion:^{
@@ -83,7 +131,7 @@ static int wrongPwdTimers = 0;
     }else{
         wrongPwdTimers ++;
         
-        if (wrongPwdTimers > 3 ) {
+        if (wrongPwdTimers > 10 ) {
             wrongPwdTimers = 0;
             
             [UIView animateWithDuration:0.3 animations:^{
@@ -98,7 +146,8 @@ static int wrongPwdTimers = 0;
         [UIMenuController sharedMenuController].menuVisible = NO;
         [self.passwordField selectAll:nil];
         [self.passwordField setClearsOnBeginEditing:YES];
-        [self shakeAnimation:self.containerView];
+        //[self shakeAnimation:self.containerView];
+        [self shakeView:self.containerView];
     }
 }
 -(IBAction)forgotPwd:(id)sender{
@@ -110,6 +159,31 @@ static int wrongPwdTimers = 0;
     }];
 
     
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+//    [UIView animateWithDuration:.3 animations:^{
+//        self.view.transform = CGAffineTransformMakeTranslation(0., -216/2);
+//    } completion:^(BOOL finished) {
+//        
+//    }];
+    
+    self.enterButton.enabled = YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    [textField resignFirstResponder];
+//    [UIView animateWithDuration:.3 animations:^{
+//        self.view.transform = CGAffineTransformIdentity;
+//    } completion:^(BOOL finished) {
+//        
+//    }];
+
+    if (textField.text && textField.text.length > 0 ) {
+            self.enterButton.enabled = YES;
+    }else{
+        self.enterButton.enabled = NO;
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
