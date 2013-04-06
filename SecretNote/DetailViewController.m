@@ -17,10 +17,6 @@
 
 
 #pragma mark - UITextViewDelegate
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    return YES;
-}
-
 - (void)textViewDidEndEditing:(UITextView *)textView{
     NSLog(@"textView did end editting.");
     if (_detailItem) {
@@ -29,6 +25,11 @@
         NSString *possibleTitle = [stringArray objectAtIndex:0];
         [_detailItem setValue:possibleTitle forKey:@"title"];
     }
+}
+
+- (BOOL)textViewShouldEndEditing:(UITextView *)textView{
+    [self.noteTextView resignFirstResponder];
+    return YES;
 }
 
 

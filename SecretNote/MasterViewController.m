@@ -263,6 +263,7 @@
 {
     NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = [[object valueForKey:@"title"] description];
+    //cell.backgroundColor = [UIColor orangeColor];
 }
 
 @end

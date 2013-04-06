@@ -34,6 +34,7 @@
     [self.view addGestureRecognizer:tap];
     
     self.enterButton.enabled = NO;
+    self.sendPwdButton.alpha = 0;
 }
 
 - (void)onTap{
@@ -131,14 +132,14 @@ static int wrongPwdTimers = 0;
     }else{
         wrongPwdTimers ++;
         
-        if (wrongPwdTimers > 10 ) {
+        if (wrongPwdTimers > 5 ) {
             wrongPwdTimers = 0;
             
             [UIView animateWithDuration:0.3 animations:^{
-                self.containerView.alpha = 0.;
                 self.sendPwdButton.alpha = 1.;
                 self.sendPwdButton.hidden = NO;
-
+                self.containerView.alpha = 0;
+                
             } completion:^(BOOL finished) {
             }];            
             return;
