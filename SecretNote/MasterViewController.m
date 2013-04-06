@@ -55,6 +55,7 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:kShowLoginView object:nil];
     }
 
+    self.view.backgroundColor = [UIColor lightGrayColor];
     
 
 }
@@ -90,9 +91,6 @@
     if (ISPAD == NO ) {
         [self performSegueWithIdentifier:@"showDetail" sender:nil];
     }
-    
-
-    
 }
 
 #pragma mark - Table View
@@ -111,6 +109,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
@@ -140,7 +139,7 @@
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // The table view should not be re-orderable.
-    return NO;
+    return YES;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -263,7 +262,7 @@
 {
     NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = [[object valueForKey:@"title"] description];
-    //cell.backgroundColor = [UIColor orangeColor];
+    cell.detailTextLabel.text = [[object valueForKey:@"timeStamp"] description];
 }
 
 @end
